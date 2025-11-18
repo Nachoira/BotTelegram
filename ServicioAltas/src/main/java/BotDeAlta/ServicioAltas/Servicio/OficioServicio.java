@@ -1,13 +1,12 @@
 
-package Servicio;
+package BotDeAlta.ServicioAltas.Servicio;
 
-import Modelo.Oficio;
-import Repositorio.OficioRepositorio;
+import BotDeAlta.ServicioAltas.Modelo.Oficio;
+import BotDeAlta.ServicioAltas.Repositorio.OficioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OficioServicio {
@@ -24,4 +23,16 @@ public class OficioServicio {
     public List<Oficio> obtenerTodos() {
         return oficioRepositorio.findAll();
     }
+
+    public void deleteOficio(Long id){
+        oficioRepositorio.deleteById(id);
+    }
+
+    public Oficio buscarPorId(Long id) {
+        return oficioRepositorio.findById(id).orElse(null);
+    }
+    public Oficio updateOficio(Oficio oficio){
+        return oficioRepositorio.save(oficio);
+    }
+
 }

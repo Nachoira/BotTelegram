@@ -1,4 +1,4 @@
-package Modelo;
+package BotDeAlta.ServicioAltas.Modelo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +15,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 @Table(name="oficios")
 public class Oficio {
@@ -24,5 +23,6 @@ public class Oficio {
     private int id;
     private String  nombre;
     private String descripcion;
+    private String telefono;
 
 }
