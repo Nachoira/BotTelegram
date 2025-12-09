@@ -8,10 +8,20 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 @Configuration
 public class BotConfig {
+
     @Bean
-    public TelegramBotsApi telegramBotsApi(JobBot jobBot) throws TelegramApiException{
-        TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-        botsApi.registerBot(jobBot);
-        return botsApi;
+    public TelegramBotsApi telegramBotsApi() throws TelegramApiException {
+        // Solo crea el objeto API. No registra nada aún.
+        return new TelegramBotsApi(DefaultBotSession.class);
+    }
+
+    @Bean
+    public JobBot registerBot(TelegramBotsApi telegramBotsApi, JobBot jobBot) {
+        try {
+            telegramBotsApi.registerBot(jobBot);  // ya no rompe el arranque
+        } catch (Exception e) {
+            System.out.println("No se pudo borrar webhook anterior (normal en LongPolling). Se continúa igual.");
+        }
+        return jobBot;
     }
 }

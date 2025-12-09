@@ -1,9 +1,6 @@
 package BotDeAlta.ServicioAltas.Modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.persistence.metamodel.SingularAttribute;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +20,9 @@ public class Oficio {
     private int id;
     private String  nombre;
     private String descripcion;
-    private String telefono;
-
+    @ManyToOne
+    @JoinColumn(name="Ciudad_id")
+    private Ciudad ciudad;
+    @ManyToOne
+    private Trabajador trabajador;
 }
