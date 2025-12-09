@@ -38,7 +38,7 @@ public class JobBot extends TelegramLongPollingBot {
         String mensaje = update.getMessage().getText();
         long chatId = update.getMessage().getChatId();
 
-        
+
         if (mensaje.startsWith("/alta")) {
             String[] partes = mensaje.replace("/alta", "").split("\\|");
             if (partes.length < 3) {
@@ -371,6 +371,6 @@ public class JobBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "AQUI_VA_TU_TOKEN";
+        return "8381310145:AAFSQwZJ7JvvvtIWAkj5euBEVYRFXiyfMyI";
     }
 }
